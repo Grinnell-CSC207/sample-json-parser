@@ -68,7 +68,7 @@ public class JSON
             {
               return parseNumber(json);
             } // if it's a digit
-          else 
+          else
             {
               return parseConstant(json);
             } // if it's not a string or array or object or number
@@ -129,14 +129,14 @@ public class JSON
             throw new Exception("Invalid constant starting with n.");
         case 't':
           if ((json.read() == 't') && (json.read() == 'r')
-               && (json.read() == 'u') && (json.read() == 'e'))
+              && (json.read() == 'u') && (json.read() == 'e'))
             return Boolean.TRUE;
           else
             throw new Exception("Invalid constant starting with t.");
         case 'f':
           if ((json.read() == 'f') && (json.read() == 'a')
-               && (json.read() == 'l') && (json.read() == 's')
-               && (json.read() == 'e'))
+              && (json.read() == 'l') && (json.read() == 's')
+              && (json.read() == 'e'))
             return Boolean.FALSE;
           else
             throw new Exception("Invalid constant starting with f.");
@@ -196,11 +196,11 @@ public class JSON
   /**
    * Read and parse a JSON object.
    */
-  static HashMap<String,Object> parseObject(BufferedReader json)
+  static HashMap<String, Object> parseObject(BufferedReader json)
     throws Exception
   {
     int ch;
-    HashMap<String,Object> result = new HashMap<String,Object>();
+    HashMap<String, Object> result = new HashMap<String, Object>();
     if (json.read() != '{')
       throw new Exception("Not an object.");
     while ((ch = peek(json)) != '}')
@@ -209,7 +209,7 @@ public class JSON
         if ((ch = json.read()) != ':')
           throw new Exception("Missing colon in object.");
         Object value = parse(json);
-        result.put(key,value);
+        result.put(key, value);
         // MAKE ME MORE ELEGANT
         if (((ch = peek(json)) != ',') && (ch != '}'))
           throw new Exception("Invalid character in array: " + ch);
@@ -319,18 +319,18 @@ public class JSON
   static String toString(ArrayList lst)
   {
     StringBuilder result = new StringBuilder();
-    boolean first = true;   // Hack!
+    boolean first = true; // Hack!
     result.append("[");
     for (Object obj : lst)
       {
-        if (! first)
+        if (!first)
           result.append(",");
         else
           first = false;
         result.append(toString(obj));
       } //  for
-     result.append("]");
-     return result.toString();
+    result.append("]");
+    return result.toString();
   } // toString(ArrayList)
 
   /**
@@ -339,11 +339,11 @@ public class JSON
   static String toString(HashMap map)
   {
     StringBuilder result = new StringBuilder();
-    boolean first = true;   // Hack!
+    boolean first = true; // Hack!
     result.append("{");
-    for (Object key: map.keySet())
+    for (Object key : map.keySet())
       {
-        if (! first)
+        if (!first)
           result.append(",");
         else
           first = false;
@@ -351,8 +351,8 @@ public class JSON
         result.append(":");
         result.append(toString(map.get(key)));
       } //  for
-     result.append("}");
-     return result.toString();
+    result.append("}");
+    return result.toString();
   } // toString(HashMap)
 
   /**
@@ -367,7 +367,7 @@ public class JSON
     for (int i = 0; i < len; i++)
       {
         switch (ch = str.charAt(i))
-          { 
+          {
             case '\b':
               result.append("\\b");
               break;
