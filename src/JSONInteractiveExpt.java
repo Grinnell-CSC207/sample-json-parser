@@ -17,6 +17,6 @@ public class JSONInteractiveExpt
     pen.flush();
     Object thing = JSON.parse(eyes);
     pen.println("toString(): " + thing);
-    pen.println("toJSONString(): " + JSON.toJSONString(thing));
+    pen.println("toJSONString(): " + JSON.toString(thing));
   } // main(String[])
 } // JSONInteractiveExpt
