@@ -63,6 +63,8 @@ public class JSON
           return parseArray(json);
         case '{':
           return parseObject(json);
+        case '-':
+          return parseNumber(json);
         default:
           if (Character.isDigit(peek(json)))
             {
@@ -159,7 +161,7 @@ public class JSON
     // Handle intro minus (no intro plus supported).
     if (peek(json) == '-')
       {
-        result.append((char) peek(json));
+        result.append((char) json.read());
       } // if (peek == '-')
 
     // Read initial digits
